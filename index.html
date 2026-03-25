@@ -3,34 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Promo - Ta Barato</title>
+    <title>Promo - Tá Barato - Link na Bio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="img/TaBarato.png" type="image/x-icon">
 </head>
 <body>
+    
+    <div id="socialNotification" class="toast">
+        <span class="icon">🔔</span>
+        <span id="notificationText">🔥 Novo erro de preço detectado!</span>
+    </div>
+
     <header>
-        <img src="img/TaBarato.png" alt="Logo da empresa Promo - Ta Barato" id="logo">
+        <img src="img/TaBarato.png" alt="Logo da empresa Promo - Tá Barato" id="logo">
         <h1>RECEBA OFERTAS EXCLUSIVAS DIRETO NO SEU TELEGRAM</h1>
-        <h2>As melhores promoções das maiores marcas do Brasil, com descontos imperdíveis em produtos e serviços selecionados para você.</h2>
+        <h2>As melhores promoções das maiores marcas do Brasil, com descontos imperdíveis selecionados para você.</h2>
     </header>
+    
     <main>
-        <ul>
-            <li><a href="https://t.me/achadospremiun"><img src="img/TaBarato.png" alt="Grupo principal">Promo - Ta Barato</a></li>
-
-            <li><a href="https://t.me/+KuyIy5yOnSNiYWVh"><img src="img/Casa.png" alt="Grupo Casa">Promo - Casa</a></li>
-
-            <li><a href="https://t.me/+taJGvq8y9pA1ZTQx"><img src="img/Brinquedo.png" alt="Grupo Brinquedo">Promo - Brinquedos</a></li>
-            <li><a href="https://t.me/+WSjZiNRn3rIwY2Yx"><img src="img/Escola.png" alt="Grupo Escola">Promo - Escolar</a></li>
-
-            <li><a href="https://t.me/+Km_m1Zc8rVRkNzYx"><img src="img/Ele.png" alt="Grupo para ele">Promo - Ele</a></li>
-
-            <li><a href="https://t.me/+qZudJjVf6dwzNGZh"><img src="img/Shoping.png" alt="Grupo Carrinho">Promo - Carrinho</a></li>
-
-            <li><a href="https://t.me/+8uQ7VPZt0ihiNTJh"><img src="img/Kids.png" alt="Grupo Kids">Promo - Kids</a></li>
+        <ul id="link-list">
+            <li>
+                <a href="https://t.me/achadospremiun" class="btn-promo principal pulse-highlight">
+                    <img src="img/TaBarato.png" alt="Grupo principal">
+                    <span>Promo - Tá Barato (VIP)</span>
+                    <span class="badge">Mais Quente 🔥</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://t.me/+KuyIy5yOnSNiYWVh" class="btn-promo casa">
+                    <img src="img/Casa.png" alt="Grupo Casa">
+                    <span>Promo - Casa</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://t.me/+taJGvq8y9pA1ZTQx" class="btn-promo brinquedos">
+                    <img src="img/Brinquedo.png" alt="Grupo Brinquedo">
+                    <span>Promo - Brinquedos</span>
+                    <span class="badge">Vagas Limitadas</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://t.me/+WSjZiNRn3rIwY2Yx" class="btn-promo escola">
+                    <img src="img/Escola.png" alt="Grupo Escola">
+                    <span>Promo - Escolar</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://t.me/+Km_m1Zc8rVRkNzYx" class="btn-promo ele">
+                    <img src="img/Ele.png" alt="Grupo para ele">
+                    <span>Promo - Ele</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://t.me/+qZudJjVf6dwzNGZh" class="btn-promo carrinho">
+                    <img src="img/Shoping.png" alt="Grupo Carrinho">
+                    <span>Promo - Carrinho</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://t.me/+8uQ7VPZt0ihiNTJh" class="btn-promo kids">
+                    <img src="img/Kids.png" alt="Grupo Kids">
+                    <span>Promo - Kids</span>
+                </a>
+            </li>
         </ul>
     </main>
+
     <footer>
-        <p>&copy; 2026 Promo - Ta Barato. Todos os direitos reservados ao desenvolvedor web <a href="">Souzx4</a>.</p>
+        <p>&copy; 2026 Promo - Tá Barato. Todos os direitos reservados. Desenvolvido por <a href="#">Souzx4</a>.</p>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

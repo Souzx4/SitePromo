@@ -1,70 +1,241 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
-
+/* 1. RESET E ESTILOS GERAIS */
 * {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
 
+body {
+    /* NOVO FUNDO DINÂMICO E ENERGÉTICO */
+    background: linear-gradient(135deg, #1d3557 0%, #39a3ff 50%, #f1faee 100%);
+    background-size: cover;
+    background-attachment: fixed;
+    color: #333;
+    min-height: 100vh;
+}
+
+/* 2. CABEÇALHO - ESTILIZAÇÃO E SOMBRA */
 header {
     background-color: white;
     text-align: center;
+    padding: 10px 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-radius: 0 0 25px 25px; /* Bordas arredondadas no fundo */
+    margin-bottom: 30px;
 }
 
 #logo {
-    width: 20%;
+    width: 120px;
     height: auto;
+    margin-bottom: 15px;
+    transition: transform 0.3s;
+}
+#logo:hover {
+    transform: scale(1.05);
 }
 
 h1 {
-    color: #39a3ff;
-    font-size: 2.5rem;
-    margin-bottom: 13px;
+    color: #1d3557; /* Cor mais escura para contraste */
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    font-weight: 700;
 }
 
 h2 {
-    color: #28669c;
-    font-size: 1.25rem;
-    margin-bottom: 20px;
+    color: #555;
+    font-size: 1rem;
+    font-weight: 400;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
+/* 3. CONTEÚDO PRINCIPAL E LISTA DE BOTÕES */
 main {
-    display: grid;
+    display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 60vh;
-    padding-bottom: 20px;
+    padding: 0 20px 50px 20px;
 }
 
 ul {
     list-style: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 450px; /* Mantém uma largura boa no mobile */
 }
 
-li{
+/* 4. ESTILO GERAL DOS BOTÕES - ALTA CONVERSÃO */
+.btn-promo {
+    text-decoration: none;
+    color: white;
+    padding: 18px 25px;
+    border-radius: 15px;
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative; /* Necessário para as etiquetas (badges) */
+    width: 100%;
+    overflow: visible; /* Garante que a etiqueta não seja cortada */
 }
 
-img {
-    width: 15%;
-    height: auto;
-    padding-bottom: 30px;
+.btn-promo:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
 
-footer {
-    background-color: black;
+.btn-promo:active {
+    transform: translateY(-1px) scale(0.99);
+}
+
+.btn-promo img {
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+}
+
+.btn-promo span:not(.badge) {
+    flex-grow: 1;
+}
+
+/* ETIQUETAS DE URGÊNCIA (BADGES) */
+.badge {
+    background-color: #d62828;
     color: white;
-    text-align: center;
-    padding: 5px;
+    font-size: 0.65rem;
+    padding: 3px 6px;
+    border-radius: 20px;
+    position: absolute;
+    top: -12px;
+    right: 5px;
+    font-weight: 700;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-p {
-    font-size: 0.75rem;
+/* 5. PALETA DE CORES VARIADAS PARA CADA CATEGORIA 👋 */
+
+/* Principal (Mantido Laranja para Destaque Máximo) */
+.btn-promo.principal {
+    background: linear-gradient(135deg, #f77f00 0%, #fcbf49 100%);
+    box-shadow: 0 4px 10px rgba(247, 127, 0, 0.3);
+}
+
+/* Casa - Verde Vibrante */
+.btn-promo.casa {
+    background: linear-gradient(135deg, #1d976c 0%, #93f9b9 100%);
+    box-shadow: 0 4px 10px rgba(29, 151, 108, 0.3);
+}
+
+/* Brinquedos - Amarelo Divertido */
+.btn-promo.brinquedos {
+    background: linear-gradient(135deg, #e67e22 0%, #f1c40f 100%);
+    box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
+}
+
+/* Escola - Roxo Criativo */
+.btn-promo.escola {
+    background: linear-gradient(135deg, #8e44ad 0%, #c39bd3 100%);
+    box-shadow: 0 4px 10px rgba(142, 68, 173, 0.3);
+}
+
+/* Ele - Azul Sóbrio e Estiloso */
+.btn-promo.ele {
+    background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+    box-shadow: 0 4px 10px rgba(44, 62, 80, 0.3);
+}
+
+/* Carrinho - Vermelho Urgência */
+.btn-promo.carrinho {
+    background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
+    box-shadow: 0 4px 10px rgba(192, 57, 43, 0.3);
+}
+
+/* Kids - Azul Terno */
+.btn-promo.kids {
+    background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%);
+    box-shadow: 0 4px 10px rgba(33, 147, 176, 0.3);
+}
+
+/* Animação para o botão principal pulsar sutilmente */
+.pulse-highlight {
+    animation: pulseHighlight 2s infinite;
+}
+@keyframes pulseHighlight {
+    0% {
+        box-shadow: 0 0 0 0 rgba(247, 127, 0, 0.6);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(247, 127, 0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(247, 127, 0, 0);
+    }
+}
+
+/* 6. ESTILIZAÇÃO DAS NOTIFICAÇÕES DE PROVA SOCIAL (TOAST) */
+.toast {
+    position: fixed;
+    bottom: -100px; /* Começa escondido abaixo da tela */
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.95rem;
+    transition: bottom 0.5s ease-out, opacity 0.5s ease-out;
+    opacity: 0;
+    pointer-events: none; /* Não atrapalha os cliques na página */
+}
+
+.toast.show {
+    bottom: 20px; /* Aparece acima do rodapé */
+    opacity: 1;
+}
+
+.toast .icon {
+    font-size: 1.2rem;
+}
+
+/* 7. RODAPÉ */
+footer {
+    background-color: rgba(0,0,0,0.8);
+    color: #bbb;
+    text-align: center;
+    padding: 25px;
+    border-radius: 25px 25px 0 0;
+}
+
+footer p {
+    font-size: 0.8rem;
+}
+
+footer a {
+    color: #fcbf49;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* 8. ADAPTAÇÃO PARA TELAS GRANDES (DESKTOP) */
+@media screen and (min-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 1.1rem;
+    }
 }
