@@ -1,241 +1,212 @@
 @charset "UTF-8";
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
-/* 1. RESET E ESTILOS GERAIS */
+:root {
+/* Cores de Alto Contraste e Neon */
+--bg-dark: #020617;
+--text-main: #f8fafc;
+--text-muted: #94a3b8;
+--neon-blue: #0ea5e9;
+--neon-purple: #a855f7;
+--telegram-btn: #0088cc;
+--secondary-btn: rgba(255, 255, 255, 0.08);
+}
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+-webkit-tap-highlight-color: transparent; /* Remove flash no mobile */
 }
 
 body {
-    /* NOVO FUNDO DINÂMICO E ENERGÉTICO */
-    background: linear-gradient(135deg, #1d3557 0%, #39a3ff 50%, #f1faee 100%);
-    background-size: cover;
-    background-attachment: fixed;
-    color: #333;
-    min-height: 100vh;
+background-color: var(--bg-dark);
+/* Fundo com gradiente radial neon */
+background-image: 
+    radial-gradient(circle at 10% 20%, rgba(14, 165, 233, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.15) 0%, transparent 40%);
+color: var(--text-main);
+min-height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 20px;
+overflow-x: hidden;
 }
 
-/* 2. CABEÇALHO - ESTILIZAÇÃO E SOMBRA */
-header {
-    background-color: white;
-    text-align: center;
-    padding: 10px 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    border-radius: 0 0 25px 25px; /* Bordas arredondadas no fundo */
-    margin-bottom: 30px;
+/* Container Principal com Efeito Glassmorphism */
+.glass-container {
+width: 100%;
+max-width: 420px;
+background: rgba(255, 255, 255, 0.03);
+border-radius: 32px;
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
+border: 1px solid rgba(255, 255, 255, 0.08);
+padding: 50px 25px;
+text-align: center;
+box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+position: relative;
+z-index: 10;
 }
 
-#logo {
-    width: 120px;
-    height: auto;
-    margin-bottom: 15px;
-    transition: transform 0.3s;
-}
-#logo:hover {
-    transform: scale(1.05);
+/* Perfil Neon */
+.profile-neon {
+width: 110px;
+height: 110px;
+border-radius: 10%;
+margin: 0 auto 5px;
+position: relative;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 10px;
+background: rgba(153, 151, 151, 0.5);
 }
 
+.profile-neon::before {
+content: '';
+position: absolute;
+top: -5px; left: -5px; right: -5px; bottom: -5px;
+border-radius: 50%;
+background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+z-index: -1;
+filter: blur(10px);
+opacity: 0.8;
+animation: neon-pulse 3s infinite;
+}
+
+@keyframes neon-pulse {
+0%, 100% { filter: blur(10px); opacity: 0.8; }
+50% { filter: blur(15px); opacity: 1; }
+}
+
+/* Títulos e Chamadas */
 h1 {
-    color: #1d3557; /* Cor mais escura para contraste */
-    font-size: 2rem;
-    line-height: 1.2;
-    margin-bottom: 12px;
-    font-weight: 700;
+font-size: 1.8rem;
+font-weight: 800;
+line-height: 1.2;
+margin-bottom: 12px;
+background: linear-gradient(to right, #fff, #cbd5e1);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
 }
 
-h2 {
-    color: #555;
-    font-size: 1rem;
-    font-weight: 400;
-    max-width: 600px;
-    margin: 0 auto;
+h1 .highlight {
+background: linear-gradient(to right, var(--neon-blue), var(--neon-purple));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+font-weight: 900;
 }
 
-/* 3. CONTEÚDO PRINCIPAL E LISTA DE BOTÕES */
-main {
-    display: flex;
-    justify-content: center;
-    padding: 0 20px 50px 20px;
+.subtitle {
+font-size: 1rem;
+color: var(--text-muted);
+margin-bottom: 35px;
+line-height: 1.5;
 }
 
-ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
-    max-width: 450px; /* Mantém uma largura boa no mobile */
+/* Wrapper de Botões Interativos */
+.links-wrapper {
+display: flex;
+flex-direction: column;
+gap: 18px;
 }
 
-/* 4. ESTILO GERAL DOS BOTÕES - ALTA CONVERSÃO */
-.btn-promo {
-    text-decoration: none;
-    color: white;
-    padding: 18px 25px;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    font-size: 1.2rem;
-    font-weight: 600;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    transition: transform 0.2s, box-shadow 0.2s;
-    position: relative; /* Necessário para as etiquetas (badges) */
-    width: 100%;
-    overflow: visible; /* Garante que a etiqueta não seja cortada */
+/* Estilo Base do Botão */
+.btn {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 12px;
+width: 100%;
+padding: 18px;
+border-radius: 16px;
+text-decoration: none;
+color: white;
+font-weight: 700;
+font-size: 1.1rem;
+transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+position: relative;
+border: 1px solid transparent;
 }
 
-.btn-promo:hover {
-    transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+/* Efeito de flutuação ao passar o mouse (desktop) */
+.btn:hover {
+transform: translateY(-5px) scale(1.02);
 }
 
-.btn-promo:active {
-    transform: translateY(-1px) scale(0.99);
+/* Botão Telegram Principal (A Grande Chamada) */
+.btn-main-telegram {
+background-color: var(--telegram-btn);
+box-shadow: 0 10px 30px rgba(0, 136, 204, 0.3);
+overflow: hidden;
 }
 
-.btn-promo img {
-    width: 35px;
-    height: 35px;
-    border-radius: 5px;
+/* Efeito de Brilho Passante (Gatilho Visual) */
+.btn-main-telegram::after {
+content: '';
+position: absolute;
+top: -50%; left: -50%;
+width: 200%; height: 200%;
+background: linear-gradient(to bottom right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.13) 77%, rgba(255,255,255,0.5) 100%);
+transform: rotate(-30deg);
+transition: transform 0.7s;
+animation: shine-effect 3s infinite;
 }
 
-.btn-promo span:not(.badge) {
-    flex-grow: 1;
+@keyframes shine-effect {
+0% { transform: translateX(-150%) rotate(-30deg); }
+100% { transform: translateX(150%) rotate(-30deg); }
 }
 
-/* ETIQUETAS DE URGÊNCIA (BADGES) */
-.badge {
-    background-color: #d62828;
-    color: white;
-    font-size: 0.65rem;
-    padding: 3px 6px;
-    border-radius: 20px;
-    position: absolute;
-    top: -12px;
-    right: 5px;
-    font-weight: 700;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+.btn-main-telegram:hover {
+background-color: #0099e6;
+box-shadow: 0 15px 40px rgba(0, 136, 204, 0.5);
 }
 
-/* 5. PALETA DE CORES VARIADAS PARA CADA CATEGORIA 👋 */
-
-/* Principal (Mantido Laranja para Destaque Máximo) */
-.btn-promo.principal {
-    background: linear-gradient(135deg, #f77f00 0%, #fcbf49 100%);
-    box-shadow: 0 4px 10px rgba(247, 127, 0, 0.3);
+/* Botões Secundários */
+.btn-secondary {
+background-color: var(--secondary-btn);
+border: 1px solid rgba(255, 255, 255, 0.05);
+color: rgba(255, 255, 255, 0.9);
+font-size: 1rem;
 }
 
-/* Casa - Verde Vibrante */
-.btn-promo.casa {
-    background: linear-gradient(135deg, #1d976c 0%, #93f9b9 100%);
-    box-shadow: 0 4px 10px rgba(29, 151, 108, 0.3);
+.btn-secondary:hover {
+background-color: rgba(255, 255, 255, 0.12);
+border-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Brinquedos - Amarelo Divertido */
-.btn-promo.brinquedos {
-    background: linear-gradient(135deg, #e67e22 0%, #f1c40f 100%);
-    box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
+/* Componente de Prova Social Simulada (Notificação) */
+.notification-toast {
+position: fixed;
+bottom: -100px;
+left: 50%;
+transform: translateX(-50%);
+background: rgba(0, 0, 0, 0.8);
+backdrop-filter: blur(10px);
+padding: 12px 20px;
+border-radius: 50px;
+border: 1px solid rgba(255, 255, 255, 0.1);
+color: white;
+font-size: 0.85rem;
+display: flex;
+align-items: center;
+gap: 10px;
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+z-index: 100;
+transition: bottom 0.5s ease-out;
+white-space: nowrap;
 }
 
-/* Escola - Roxo Criativo */
-.btn-promo.escola {
-    background: linear-gradient(135deg, #8e44ad 0%, #c39bd3 100%);
-    box-shadow: 0 4px 10px rgba(142, 68, 173, 0.3);
+.notification-toast.show {
+bottom: 30px;
 }
 
-/* Ele - Azul Sóbrio e Estiloso */
-.btn-promo.ele {
-    background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
-    box-shadow: 0 4px 10px rgba(44, 62, 80, 0.3);
+.notification-toast .icon-spin {
+animation: spin 1s linear infinite;
+color: var(--neon-blue);
 }
 
-/* Carrinho - Vermelho Urgência */
-.btn-promo.carrinho {
-    background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
-    box-shadow: 0 4px 10px rgba(192, 57, 43, 0.3);
-}
-
-/* Kids - Azul Terno */
-.btn-promo.kids {
-    background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%);
-    box-shadow: 0 4px 10px rgba(33, 147, 176, 0.3);
-}
-
-/* Animação para o botão principal pulsar sutilmente */
-.pulse-highlight {
-    animation: pulseHighlight 2s infinite;
-}
-@keyframes pulseHighlight {
-    0% {
-        box-shadow: 0 0 0 0 rgba(247, 127, 0, 0.6);
-    }
-    70% {
-        box-shadow: 0 0 0 10px rgba(247, 127, 0, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(247, 127, 0, 0);
-    }
-}
-
-/* 6. ESTILIZAÇÃO DAS NOTIFICAÇÕES DE PROVA SOCIAL (TOAST) */
-.toast {
-    position: fixed;
-    bottom: -100px; /* Começa escondido abaixo da tela */
-    right: 20px;
-    background-color: rgba(0, 0, 0, 0.9);
-    color: white;
-    padding: 15px 25px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 0.95rem;
-    transition: bottom 0.5s ease-out, opacity 0.5s ease-out;
-    opacity: 0;
-    pointer-events: none; /* Não atrapalha os cliques na página */
-}
-
-.toast.show {
-    bottom: 20px; /* Aparece acima do rodapé */
-    opacity: 1;
-}
-
-.toast .icon {
-    font-size: 1.2rem;
-}
-
-/* 7. RODAPÉ */
-footer {
-    background-color: rgba(0,0,0,0.8);
-    color: #bbb;
-    text-align: center;
-    padding: 25px;
-    border-radius: 25px 25px 0 0;
-}
-
-footer p {
-    font-size: 0.8rem;
-}
-
-footer a {
-    color: #fcbf49;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-/* 8. ADAPTAÇÃO PARA TELAS GRANDES (DESKTOP) */
-@media screen and (min-width: 768px) {
-    h1 {
-        font-size: 2.5rem;
-    }
-    
-    h2 {
-        font-size: 1.1rem;
-    }
-}
+@keyframes spin { 100% { transform: rotate(360deg); } }
