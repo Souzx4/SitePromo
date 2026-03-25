@@ -1,4 +1,4 @@
-// JAVASCRIPT: Lógica de Prova Social Simulada (Aumenta o Clicke)
+// JAVASCRIPT: Lógica de Prova Social Simulada (Aumenta o Clique)
 
 const toast = document.getElementById('socialNotification');
 const textSpan = document.getElementById('notificationText');
